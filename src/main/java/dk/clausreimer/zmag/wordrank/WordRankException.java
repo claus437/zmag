@@ -8,19 +8,11 @@ package dk.clausreimer.zmag.wordrank;
  * To change this template use File | Settings | File Templates.
  */
 public class WordRankException extends RuntimeException {
-    public WordRankException() {
-        super();
-    }
-
     public WordRankException(String message) {
         super(message);
     }
 
     public WordRankException(String message, Throwable cause) {
         super(message, cause);
-    }
-
-    public WordRankException(Throwable cause) {
-        super(cause);
     }
 }

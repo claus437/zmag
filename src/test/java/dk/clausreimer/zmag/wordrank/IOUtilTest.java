@@ -77,7 +77,7 @@ public class IOUtilTest {
         File file;
         String text;
 
-        file = new File("src/main/resources/dk/clausreimer/zmag/wordrank/IOUtil.ReadFileTest.txt");
+        file = new File("src/test/resources/dk/clausreimer/zmag/wordrank/IOUtil.ReadFileTest.txt");
         text = IOUtil.read(file);
 
         Assert.assertEquals("Hello World", text.trim());
@@ -85,7 +85,7 @@ public class IOUtilTest {
 
     @Test (expected = WordRankException.class)
     public void testReadFileNotFound() {
-        IOUtil.read(new File("src/main/resources/dk/clausreimer/zmag/wordrank/IOUtil.ReadNoFile.txt"));
+        IOUtil.read(new File("src/test/resources/dk/clausreimer/zmag/wordrank/IOUtil.ReadNoFile.txt"));
     }
 
 }
