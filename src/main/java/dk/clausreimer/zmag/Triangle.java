@@ -11,24 +11,33 @@ public class Triangle {
 
     public static int getType(int a, int b, int c) {
         int[] lengths;
-        int equalSides;
-
-        equalSides = ERROR;
 
         lengths = new int[]{a, b, c};
         Arrays.sort(lengths);
 
-        if (isLengthsPositive(lengths) && isTriangle(lengths)) {
-            equalSides = 1;
+        if(!isLengthsPositive(lengths)) {
+            return ERROR;
+        }
 
-            for (int i = 1; i < lengths.length; i++) {
-                if (lengths[i - 1] == lengths[i]) {
-                    equalSides++;
-                }
+        if (!isTriangle(lengths)) {
+            return ERROR;
+        }
+
+        return getType(lengths);
+    }
+
+    private static int getType(int[] lengths) {
+        int matches;
+
+        matches = 1;
+
+        for (int i = 1; i < lengths.length; i++) {
+            if (lengths[i - 1] == lengths[i]) {
+                matches++;
             }
         }
 
-        return equalSides;
+        return matches;
     }
 
     private static boolean isTriangle(int[] sortedLengths) {
@@ -36,17 +45,12 @@ public class Triangle {
     }
 
     private static boolean isLengthsPositive(int[] lengths) {
-        boolean positive;
-
-        positive = true;
-
         for (int length : lengths) {
             if (length <= 0) {
-                positive = false;
-                break;
+                return false;
             }
         }
 
-        return positive;
+        return true;
     }
 }
