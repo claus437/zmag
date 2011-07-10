@@ -1,11 +1,15 @@
 package dk.clausreimer.zmag.mailservice;
 
+import org.junit.Rule;
 import org.junit.Test;
 
 import org.junit.Assert;
+import org.junit.rules.ExpectedException;
 
 
 public class MailFactoryTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void testFactoryForDefaultMail() {
@@ -29,8 +33,11 @@ public class MailFactoryTest {
         }
     }
 
-    @Test (expected = MailFactoryException.class)
+    @Test
     public void testErrorWhenNoClass() {
+        thrown.expect(MailFactoryException.class);
+        thrown.expectMessage("mail implementation NoClass not found");
+
         try {
             System.setProperty("dk.clausreimer.zmag.mailservice.MailImpl", "NoClass");
             MailFactory.create();
@@ -39,8 +46,11 @@ public class MailFactoryTest {
         }
     }
 
-    @Test (expected = MailFactoryException.class)
+    @Test
     public void testErrorWhenNoPublicConstructor() {
+        thrown.expect(MailFactoryException.class);
+        thrown.expectMessage("class dk.clausreimer.zmag.mailservice.MailPrivateConstructor has no public constructor");
+
         try {
             System.setProperty("dk.clausreimer.zmag.mailservice.MailImpl", MailPrivateConstructor.class.getCanonicalName());
             MailFactory.create();
@@ -49,8 +59,11 @@ public class MailFactoryTest {
         }
     }
 
-    @Test (expected = MailFactoryException.class)
+    @Test
     public void testErrorWhenInstantiation() {
+        thrown.expect(MailFactoryException.class);
+        thrown.expectMessage("unable to instantiate class dk.clausreimer.zmag.mailservice.MailInitiationError");
+
         try {
             System.setProperty("dk.clausreimer.zmag.mailservice.MailImpl", MailInitiationError.class.getCanonicalName());
             MailFactory.create();

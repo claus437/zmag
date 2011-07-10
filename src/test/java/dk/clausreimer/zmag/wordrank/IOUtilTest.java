@@ -1,13 +1,18 @@
 package dk.clausreimer.zmag.wordrank;
 
+import org.junit.Rule;
 import org.junit.Test;
 
 import org.junit.Assert;
+import org.junit.rules.ExpectedException;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 
 
 public class IOUtilTest {
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void testRead() {
@@ -68,8 +73,11 @@ public class IOUtilTest {
         Assert.assertEquals("Hello World", text.trim());
     }
 
-    @Test (expected = WordRankException.class)
+    @Test
     public void testReadResourceNotFound() {
+        thrown.expect(WordRankException.class);
+        thrown.expectMessage("resource dk/clausreimer/zmag/wordrank/IOUtil.NoFile.txt not found");
+
         IOUtil.read("dk/clausreimer/zmag/wordrank/IOUtil.NoFile.txt");
     }
 
@@ -84,8 +92,11 @@ public class IOUtilTest {
         Assert.assertEquals("Hello World", text.trim());
     }
 
-    @Test (expected = WordRankException.class)
+    @Test
     public void testReadFileNotFound() {
+        thrown.expect(WordRankException.class);
+        thrown.expectMessage("C:\\git-hub\\zmag\\src\\test\\resources\\dk\\clausreimer\\zmag\\wordrank\\IOUtil.ReadNoFile.txt");
+
         IOUtil.read(new File("src/test/resources/dk/clausreimer/zmag/wordrank/IOUtil.ReadNoFile.txt"));
     }
 }
