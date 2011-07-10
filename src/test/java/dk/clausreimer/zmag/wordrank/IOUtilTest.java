@@ -30,7 +30,7 @@ public class IOUtilTest {
     }
 
     @Test
-    public void testReadCloseOnError() {
+    public void testStreamIsClosedOnError() {
         InputStreamMock stream;
         boolean wordRankExceptionThrown;
 
@@ -49,7 +49,7 @@ public class IOUtilTest {
     }
 
     @Test
-    public void testCloseErrorNoExceptionThrown() {
+    public void testCloseIsExceptionSafe() {
         InputStreamMock stream;
 
         stream = new InputStreamMock(new ByteArrayInputStream("Hello".getBytes()));
@@ -61,7 +61,7 @@ public class IOUtilTest {
     }
 
     @Test
-    public void testCloseNullStream() {
+    public void testCloseNullNoExceptionThrown() {
         IOUtil.close(null);
     }
 
@@ -74,7 +74,7 @@ public class IOUtilTest {
     }
 
     @Test
-    public void testReadResourceNotFound() {
+    public void testExceptionThrownWhenResourceNotFound() {
         thrown.expect(WordRankException.class);
         thrown.expectMessage("resource dk/clausreimer/zmag/wordrank/IOUtil.NoFile.txt not found");
 
@@ -93,7 +93,7 @@ public class IOUtilTest {
     }
 
     @Test
-    public void testReadFileNotFound() {
+    public void testExceptionThrownWhenFileNotFound() {
         thrown.expect(WordRankException.class);
         thrown.expectMessage("C:\\git-hub\\zmag\\src\\test\\resources\\dk\\clausreimer\\zmag\\wordrank\\IOUtil.ReadNoFile.txt");
 

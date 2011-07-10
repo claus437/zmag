@@ -77,7 +77,7 @@ public class WordRankTest {
     }
 
     @Test
-    public void testMain() {
+    public void testRunMain() {
         Main.main(new String[]{});
     }
 }

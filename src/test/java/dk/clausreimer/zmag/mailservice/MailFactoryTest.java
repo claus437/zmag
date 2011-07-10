@@ -34,7 +34,7 @@ public class MailFactoryTest {
     }
 
     @Test
-    public void testErrorWhenNoClass() {
+    public void testExceptionThrownWhenImplementationNotFound() {
         thrown.expect(MailFactoryException.class);
         thrown.expectMessage("mail implementation NoClass not found");
 
@@ -47,7 +47,7 @@ public class MailFactoryTest {
     }
 
     @Test
-    public void testErrorWhenNoPublicConstructor() {
+    public void testExceptionThrownWhenNoPublicConstructor() {
         thrown.expect(MailFactoryException.class);
         thrown.expectMessage("class dk.clausreimer.zmag.mailservice.MailPrivateConstructor has no public constructor");
 
@@ -60,7 +60,7 @@ public class MailFactoryTest {
     }
 
     @Test
-    public void testErrorWhenInstantiation() {
+    public void testExceptionThrownWhenNotInstantiable() {
         thrown.expect(MailFactoryException.class);
         thrown.expectMessage("unable to instantiate class dk.clausreimer.zmag.mailservice.MailInitiationError");
 

@@ -18,7 +18,7 @@ public class SmtpMailTest {
 
 
     @Test
-    public void testErrorSettingFrom() {
+    public void testExceptionThrownWhenMalformedOrigin() {
         thrown.expect(MailException.class);
         thrown.expectMessage("Invalid from address claus reimer");
 
@@ -26,7 +26,7 @@ public class SmtpMailTest {
     }
 
     @Test
-    public void testErrorSettingTo() {
+    public void testExceptionThrownWhenMalformedReceiver() {
         thrown.expect(MailException.class);
         thrown.expectMessage("Invalid to address claus reimer");
 
@@ -34,7 +34,7 @@ public class SmtpMailTest {
     }
 
     @Test
-    public void sendMailTransportError() {
+    public void testExceptionThrownWhenTransportError() {
         thrown.expect(MailException.class);
         thrown.expectMessage("failed sending mail");
 
@@ -50,7 +50,7 @@ public class SmtpMailTest {
 
     @Test
     @Ignore // requires a valid smtp config, see src/test/resources/dk/clausreimer/zmag/mailservice/gmail.properties
-    public void sendMailViaGMail() throws Exception {
+    public void testSendMailUsingRealSmtpServer() throws Exception {
         mail.setTo("claus437@gmail.com");
         mail.setFrom("claus438@gmail.com");
         mail.setSubject("Test");

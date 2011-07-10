@@ -17,7 +17,7 @@ public class MailServiceTest {
     MailService mailService = new MailService();
 
     @Test
-    public void testMailService() {
+    public void testMailIsSentWithGivenValues() {
         String response;
 
         response = mailService.send("origin", "receiver", "mail subject", "mail text");
@@ -31,7 +31,7 @@ public class MailServiceTest {
     }
 
     @Test
-    public void testErrorSendingMail() {
+    public void testErrorMessageForTransportError() {
         String response;
 
         MailMock.raiseSendException(new MailException("transport error"));
@@ -44,7 +44,7 @@ public class MailServiceTest {
 
 
     @Test
-    public void testRunServer() throws Exception {
+    public void testMailServiceUsingAServer() throws Exception {
         HttpServer server;
         URL url;
         URLConnection connection;

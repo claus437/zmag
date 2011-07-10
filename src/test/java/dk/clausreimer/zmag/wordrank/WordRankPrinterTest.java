@@ -34,7 +34,7 @@ public class WordRankPrinterTest {
     }
 
     @Test
-    public void testPrintMoreThanRequest() {
+    public void testPrintFewerThanAvailable() {
         Map<String, Integer> values;
         String expected;
 
