@@ -76,9 +76,9 @@ public class IOUtilTest {
     @Test
     public void testExceptionThrownWhenResourceNotFound() {
         thrown.expect(WordRankException.class);
-        thrown.expectMessage("resource dk/clausreimer/zmag/wordrank/IOUtil.NoFile.txt not found");
+        thrown.expectMessage("resource NORESOURCE not found");
 
-        IOUtil.read("dk/clausreimer/zmag/wordrank/IOUtil.NoFile.txt");
+        IOUtil.read("NORESOURCE");
     }
 
     @Test
@@ -94,9 +94,13 @@ public class IOUtilTest {
 
     @Test
     public void testExceptionThrownWhenFileNotFound() {
-        thrown.expect(WordRankException.class);
-        thrown.expectMessage("C:\\git-hub\\zmag\\src\\test\\resources\\dk\\clausreimer\\zmag\\wordrank\\IOUtil.ReadNoFile.txt");
+        File file;
 
-        IOUtil.read(new File("src/test/resources/dk/clausreimer/zmag/wordrank/IOUtil.ReadNoFile.txt"));
+        file = new File("NOFILE");
+
+        thrown.expect(WordRankException.class);
+        thrown.expectMessage("file " + file.getAbsolutePath() + " not found");
+
+        IOUtil.read(new File("NOFILE"));
     }
 }
