@@ -1,15 +1,10 @@
 package dk.clausreimer.zmag;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
-/**
- * Created by IntelliJ IDEA.
- * User: claus
- * Date: 08-07-11
- * Time: 18:34
- * To change this template use File | Settings | File Templates.
- */
+import junit.framework.Assert;
+
+
 public class TriangleTest {
 
     @Test
@@ -58,6 +53,5 @@ public class TriangleTest {
         Assert.assertEquals(Triangle.ERROR, Triangle.getType(10, 4, 4));
         Assert.assertEquals(Triangle.ERROR, Triangle.getType(4, 10, 4));
         Assert.assertEquals(Triangle.ERROR, Triangle.getType(10, 4, 4));
-
     }
 }

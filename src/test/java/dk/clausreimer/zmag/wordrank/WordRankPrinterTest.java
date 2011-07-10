@@ -1,20 +1,14 @@
 package dk.clausreimer.zmag.wordrank;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
+import junit.framework.Assert;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * Created by IntelliJ IDEA.
- * User: claus
- * Date: 09-07-11
- * Time: 19:12
- * To change this template use File | Settings | File Templates.
- */
+
 public class WordRankPrinterTest {
     private ByteArrayOutputStream result = new ByteArrayOutputStream();
     private WordRankPrinter printer = new WordRankPrinter(new PrintStream(result));
@@ -59,5 +53,4 @@ public class WordRankPrinterTest {
 
         Assert.assertEquals(expected, new String(result.toByteArray()).replaceAll("\\r", ""));
     }
-
 }

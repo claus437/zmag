@@ -1,11 +1,11 @@
 package dk.clausreimer.zmag;
 
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+
 
 public class HashSet<T> implements Set<T> {
     private Map<T, Object> values = new HashMap<T, Object>();
@@ -18,7 +18,6 @@ public class HashSet<T> implements Set<T> {
         return values.isEmpty();
     }
 
-    //TODO make generics
     public boolean contains(Object object) {
         return values.containsKey(object);
     }

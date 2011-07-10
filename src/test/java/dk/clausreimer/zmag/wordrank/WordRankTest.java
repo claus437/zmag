@@ -1,10 +1,11 @@
 package dk.clausreimer.zmag.wordrank;
 
-import org.junit.Assert;
 import org.junit.Test;
 
+import org.junit.Assert;
 import java.util.Arrays;
 import java.util.Map;
+
 
 public class WordRankTest {
     private WordRank wordRank = new WordRank();

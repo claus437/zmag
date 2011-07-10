@@ -11,15 +11,13 @@ import java.util.Properties;
 
 public class SmtpMail implements Mail {
     private MimeMessage message;
-    private Session session;
 
     public SmtpMail() {
         Properties properties;
+        Session session;
 
         properties = System.getProperties();
-
         session = Session.getDefaultInstance(properties, new PropertyAuthenticator(properties));
-
         message = new MimeMessage(session);
     }
 
@@ -57,10 +55,7 @@ public class SmtpMail implements Mail {
 
     public void send() {
         try {
-            Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.gmail.com", 587, "claus437", "minitrans");
             Transport.send(message);
-
         } catch (MessagingException x) {
             throw new MailException("failed sending mail ", x);
         }

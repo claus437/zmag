@@ -1,17 +1,11 @@
 package dk.clausreimer.zmag.mailservice;
 
-import org.junit.Assert;
 import org.junit.Test;
 
+import org.junit.Assert;
 import java.util.Properties;
 
-/**
- * Created by IntelliJ IDEA.
- * User: claus
- * Date: 10-07-11
- * Time: 14:53
- * To change this template use File | Settings | File Templates.
- */
+
 public class PropertyAuthenticatorTest {
 
     @Test

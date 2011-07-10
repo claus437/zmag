@@ -1,8 +1,8 @@
 package dk.clausreimer.zmag;
 
-import junit.framework.Assert;
 import org.junit.Test;
 
+import junit.framework.Assert;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -159,5 +159,4 @@ public class HashSetTest {
 
         Assert.assertEquals(0, list.size());
     }
-
 }

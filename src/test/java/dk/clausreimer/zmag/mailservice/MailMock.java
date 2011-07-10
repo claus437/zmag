@@ -1,12 +1,6 @@
 package dk.clausreimer.zmag.mailservice;
 
-/**
- * Created by IntelliJ IDEA.
- * User: claus
- * Date: 09-07-11
- * Time: 23:40
- * To change this template use File | Settings | File Templates.
- */
+
 public class MailMock implements Mail {
     private static String receiver;
     private static String origin;
@@ -59,7 +53,7 @@ public class MailMock implements Mail {
         return text;
     }
 
-    public static int getSent() {
+    public static int getMailsSent() {
         return sent;
     }
 

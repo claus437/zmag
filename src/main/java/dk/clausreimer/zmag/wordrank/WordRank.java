@@ -7,6 +7,7 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
 public class WordRank {
     private static final Pattern ENGLISH_WORD_PATTERN = Pattern.compile("[a-zA-Z]+");
     private Map<String, Integer> map;

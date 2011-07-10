@@ -1,10 +1,11 @@
 package dk.clausreimer.zmag.wordrank;
 
-import org.junit.Assert;
 import org.junit.Test;
 
+import org.junit.Assert;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+
 
 public class IOUtilTest {
 
@@ -87,5 +88,4 @@ public class IOUtilTest {
     public void testReadFileNotFound() {
         IOUtil.read(new File("src/test/resources/dk/clausreimer/zmag/wordrank/IOUtil.ReadNoFile.txt"));
     }
-
 }

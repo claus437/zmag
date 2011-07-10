@@ -1,16 +1,17 @@
 package dk.clausreimer.zmag.mailservice;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import org.junit.Assert;
 import com.sun.jersey.api.container.httpserver.HttpServerFactory;
 import com.sun.net.httpserver.HttpServer;
 import dk.clausreimer.zmag.mailservice.rest.MailService;
 import dk.clausreimer.zmag.wordrank.IOUtil;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
 import java.net.URL;
 import java.net.URLConnection;
+
 
 public class MailServiceTest {
     MailService mailService = new MailService();
@@ -26,7 +27,7 @@ public class MailServiceTest {
         Assert.assertEquals("receiver", MailMock.getTo());
         Assert.assertEquals("mail subject", MailMock.getSubject());
         Assert.assertEquals("mail text", MailMock.getMessage());
-        Assert.assertEquals(1, MailMock.getSent());
+        Assert.assertEquals(1, MailMock.getMailsSent());
     }
 
     @Test
@@ -38,7 +39,7 @@ public class MailServiceTest {
         response = mailService.send("origin", "receiver", "mail subject", "mail text");
 
         Assert.assertEquals("transport error", response);
-        Assert.assertEquals(0, MailMock.getSent());
+        Assert.assertEquals(0, MailMock.getMailsSent());
     }
 
 
@@ -69,7 +70,7 @@ public class MailServiceTest {
         Assert.assertEquals("receiver", MailMock.getTo());
         Assert.assertEquals("subject", MailMock.getSubject());
         Assert.assertEquals("text", MailMock.getMessage());
-        Assert.assertEquals(1, MailMock.getSent());
+        Assert.assertEquals(1, MailMock.getMailsSent());
     }
 
     @Before

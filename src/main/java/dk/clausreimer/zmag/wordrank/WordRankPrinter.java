@@ -4,13 +4,7 @@ import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.Map;
 
-/**
- * Created by IntelliJ IDEA.
- * User: claus
- * Date: 09-07-11
- * Time: 19:12
- * To change this template use File | Settings | File Templates.
- */
+
 public class WordRankPrinter {
     PrintStream out;
 
@@ -43,6 +37,4 @@ public class WordRankPrinter {
     private void printFooter() {
         out.println("----------------------------------------");
     }
-
-
 }

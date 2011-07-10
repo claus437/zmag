@@ -11,10 +11,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
-public class IOUtil {
 
-    private IOUtil() {
-    }
+public class IOUtil {
 
     public static String read(File file) {
         InputStream stream;
@@ -79,5 +77,4 @@ public class IOUtil {
             System.err.println("failed closing stream object " + stream);
         }
     }
-
 }

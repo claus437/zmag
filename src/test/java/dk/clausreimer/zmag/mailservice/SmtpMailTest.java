@@ -3,11 +3,13 @@ package dk.clausreimer.zmag.mailservice;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
+import org.junit.rules.ExpectedException;
 import java.io.IOException;
 
+
 public class SmtpMailTest {
+
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 

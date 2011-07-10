@@ -1,36 +1,39 @@
 package dk.clausreimer.zmag.mailservice;
 
 
-/**
- * Created by IntelliJ IDEA.
- * User: claus
- * Date: 09-07-11
- * Time: 22:39
- * To change this template use File | Settings | File Templates.
- */
 public class MailFactory {
     private static final Class<SmtpMail> DEFAULT_MAIL = SmtpMail.class;
 
-
     public static Mail create() {
-        String implementation;
+        String implementationClassName;
+        Class implementationClass;
 
-        implementation = System.getProperty("dk.clausreimer.zmag.mailservice.MailImpl");
+        implementationClassName = System.getProperty("dk.clausreimer.zmag.mailservice.MailImpl");
 
-        if (implementation == null) {
-            return createInstance(DEFAULT_MAIL);
+        if (implementationClassName == null) {
+            implementationClass = DEFAULT_MAIL;
         } else {
-            try {
-                return createInstance((Class<? extends Mail>) Class.forName(implementation));
-            } catch (ClassNotFoundException x) {
-                throw new MailFactoryException("mail implementation " + implementation + " not found", x);
-            }
+            implementationClass = findClass(implementationClassName);
         }
+
+        return createInstance(implementationClass);
     }
 
-    private static Mail createInstance(Class<? extends Mail> clazz) {
+    private static Class findClass(String className) {
+        Class clazz;
+
         try {
-            return clazz.newInstance();
+            clazz = Class.forName(className);
+        } catch (ClassNotFoundException x) {
+            throw new MailFactoryException("mail implementation " + className + " not found", x);
+        }
+
+        return clazz;
+    }
+
+    private static Mail createInstance(Class clazz) {
+        try {
+            return (Mail) clazz.newInstance();
         } catch (IllegalAccessException x) {
             throw new MailFactoryException("class " + clazz.getCanonicalName() + " has no public constructor", x);
         } catch (InstantiationException x) {
