@@ -1,8 +1,8 @@
 package dk.clausreimer.zmag;
 
+import junit.framework.Assert;
 import org.junit.Test;
 
-import junit.framework.Assert;
 import java.util.Arrays;
 import java.util.Iterator;
 

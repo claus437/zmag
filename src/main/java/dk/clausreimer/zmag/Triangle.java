@@ -1,6 +1,8 @@
 package dk.clausreimer.zmag;
 
 
+import java.util.Arrays;
+
 public class Triangle {
     public static final int SCALENE = 1;
     public static final int ISOSCELES = 2;
@@ -8,45 +10,43 @@ public class Triangle {
     public static final int ERROR = 4;
 
     public static int getType(int a, int b, int c) {
-        if (!isTriangle(a, b, c)) {
-            return ERROR;
+        int[] lengths;
+        int equalSides;
+
+        equalSides = ERROR;
+
+        lengths = new int[]{a, b, c};
+        Arrays.sort(lengths);
+
+        if (isLengthsPositive(lengths) && isTriangle(lengths)) {
+            equalSides = 1;
+
+            for (int i = 1; i < lengths.length; i++) {
+                if (lengths[i - 1] == lengths[i]) {
+                    equalSides++;
+                }
+            }
         }
 
-
-        if (a == b && b == c) {
-            return EQUILATERAL;
-        }
-
-        if (a == b || b == c || a == c) {
-            return ISOSCELES;
-        }
-
-
-        return SCALENE;
+        return equalSides;
     }
 
-    private static boolean isTriangle(int a, int b, int c) {
-        if (a <= 0 || b <= 0 || c <= 0) {
-            return false;
-        }
-
-        if (isDimonsionsFine(a, b, c)) {
-            return true;
-        }
-
-        if (isDimonsionsFine(b, a, c)) {
-            return true;
-        }
-
-        if (isDimonsionsFine(c, a, b)) {
-            return true;
-        }
-
-        return false;
+    private static boolean isTriangle(int[] sortedLengths) {
+        return sortedLengths[0] + sortedLengths[1] > sortedLengths[2];
     }
 
-    private static boolean isDimonsionsFine(int baseline, int left, int right) {
-        return baseline >= left && baseline >= right && left + right > baseline;
-    }
+    private static boolean isLengthsPositive(int[] lengths) {
+        boolean positive;
 
+        positive = true;
+
+        for (int length : lengths) {
+            if (length <= 0) {
+                positive = false;
+                break;
+            }
+        }
+
+        return positive;
+    }
 }
