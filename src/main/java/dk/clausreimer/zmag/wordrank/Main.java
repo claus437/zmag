@@ -1,5 +1,6 @@
 package dk.clausreimer.zmag.wordrank;
 
+import java.io.File;
 import java.util.Map;
 
 public class Main {
@@ -11,7 +12,7 @@ public class Main {
         String text;
 
         ranker = new WordRank();
-        text = IOUtil.read("Desiderata.txt");
+        text = IOUtil.read(new File("src/main/resources/mostly-harmless.txt"));
 
         ranker.addText(text);
         rank = ranker.getRank();

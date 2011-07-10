@@ -1,6 +1,7 @@
 package dk.clausreimer.zmag.mailservice;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -48,6 +49,7 @@ public class SmtpMailTest {
     }
 
     @Test
+    @Ignore // requires a valid smtp config, see src/test/resources/dk/clausreimer/zmag/mailservice/gmail.properties
     public void sendMailViaGMail() throws Exception {
         mail.setTo("claus437@gmail.com");
         mail.setFrom("claus438@gmail.com");

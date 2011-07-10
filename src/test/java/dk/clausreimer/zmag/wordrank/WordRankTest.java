@@ -75,5 +75,10 @@ public class WordRankTest {
 
         Assert.assertArrayEquals(new String[]{"hello", "world"}, rank.keySet().toArray());
     }
+
+    @Test
+    public void testMain() {
+        Main.main(new String[]{});
+    }
 }
 
